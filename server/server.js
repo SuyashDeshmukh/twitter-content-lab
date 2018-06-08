@@ -39,18 +39,18 @@ app.get('/search',function (req,res) {
     let values = [];
 
     client.get('search/tweets', {q: tags, count:count, result_type:type, tweet_mode:'extended'}, function(error, tweets, response) {
-        values = tweets['statuses'].map( tweet => {
-            return  {
-                id:tweet.id,
-                created_at : tweet.created_at,
-                full_text : tweet.full_text,
-                retweets : tweet.retweet_count,
-                favorites : tweet.favorite_count
-                // hashtags : tweet.entities.hashtags,
-            }
-    //     // res.json(tweets);
-        });
-        res.json(values);    
+    //     values = tweets['statuses'].map( tweet => {
+    //         return  {
+    //             id:tweet.id,
+    //             created_at : tweet.created_at,
+    //             full_text : tweet.full_text,
+    //             retweets : tweet.retweet_count,
+    //             favorites : tweet.favorite_count
+    //             // hashtags : tweet.entities.hashtags,
+    //         }
+    // //     // res.json(tweets);
+    //     });
+        res.json(tweets);    
      });
 });
 
