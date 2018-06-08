@@ -7,8 +7,8 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "start": "cd server && node server.js",
-    "postinstall": "ng build --aot -prod"
+    "start": "cd server/ && node server.js",
+    "postinstall": "ng build --aot --prod"
 
   },
   "private": true,
