@@ -9,7 +9,7 @@ import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 
 export class HttpService {
 
-  protected url = 'https://heroku-test-app-v1.herokuapp.com//search';
+  protected url = 'https://heroku-test-app-v1.herokuapp.com/search';
 
   constructor(private http: HttpClient, public sanitizer: DomSanitizer) { }
 
