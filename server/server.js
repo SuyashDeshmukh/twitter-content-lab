@@ -6,7 +6,7 @@ const app = express();
 app.use(express.static(path.join(__dirname +'/../dist')));
 
 app.get('/' ,function(req,res) {
-    res.sendFile(express.static(path.join(__dirname + '/../dist/index.html')));
+    res.sendFile(express.static(path.join(__dirname + '/../dist/heroku-test-app/index.html')));
 });
 app.listen(process.env.PORT || 8080);
 
