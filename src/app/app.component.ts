@@ -36,10 +36,10 @@ export class AppComponent implements OnInit {
     this.httpservice.getAll(this.hashtags, this.count, this.type.toLowerCase())
       .subscribe(
         restItems => {
-          // this.restItems = restItems.sort((a, b) => {
-          //   return b.id - a.id;
-          // });
-          console.log(restItems);
+          this.restItems = restItems.sort((a, b) => {
+            return b.id - a.id;
+          });
+          console.log(this.restItems);
         }
       );
   }
