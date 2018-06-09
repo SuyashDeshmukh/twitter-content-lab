@@ -9,7 +9,7 @@ This project was generated as a Coding challenge for Linqia.
 - Click Search to see the tweets.
 - Sorting options ( recent, favorites, retweets )
 
- URL : `http://twitter-content-lab-linqia.herokuapp.com/`
+ URL : <http://twitter-content-lab-linqia.herokuapp.com/`>
 
  ## Tech Stack ##
  
