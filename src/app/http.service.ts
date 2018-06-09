@@ -9,9 +9,9 @@ import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 
 export class HttpService {
 
-  protected url = 'http://localhost:8080/search';
+  // protected url = 'http://localhost:8080/search';
   // Uncomment for production
-  // protected url = '/search';
+  protected url = '/search';
 
   constructor(private http: HttpClient, public sanitizer: DomSanitizer) { }
 

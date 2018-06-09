@@ -22,7 +22,7 @@ app.use(function(req, res, next) {
   });
 
 // Uncomment for production
-// app.use(express.static(path.join(__dirname +'/../dist/heroku-test-app')));
+app.use(express.static(path.join(__dirname +'/../dist/heroku-test-app')));
 
 app.get('/search',function (req,res) {
     // res.send('Hello World');
