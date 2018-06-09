@@ -3,8 +3,8 @@ const path = require('path');
 const env = require('dotenv');
 const Twitter = require('twitter');
 const bodyParser = require('body-parser'); 
-env.config();
 const app = express();
+env.config();
 
 const client = new Twitter({
     consumer_key: process.env.CONSUMER_KEY,
@@ -24,20 +24,20 @@ app.use(function(req, res, next) {
 // Uncomment for production
 app.use(express.static(path.join(__dirname +'/../dist/heroku-test-app')));
 
-app.get('/search',function (req,res) {
-    // res.send('Hello World');
-    // res.json({
-    //     text:'hello',
-    //     body:'world'
-    // });
+app.get('/search', getTweets);
 
-    // const {tags, count, type} = req.body;
-    // res.send(req.query.q);
+app.get('/' ,function(req,res) {
+    res.sendFile('index.html');
+});
+app.listen(process.env.PORT || 8080 , () => {
+    console.log("Running on 8080");
+});
+
+function getTweets(req, res) {
     const tags =  req.query.tags;
     const count =  req.query.count;
     const type =  req.query.type;
     let values = [];
-
     client.get('search/tweets', {q: tags, count:count, result_type:type, tweet_mode:'extended'}, function(error, tweets, response) {
         values = tweets['statuses'].map( tweet => {
             return  {
@@ -48,20 +48,11 @@ app.get('/search',function (req,res) {
                 favorites : tweet.favorite_count,
                 name: tweet.user.name,
                 handle: tweet.user.screen_name
-            //     // hashtags : tweet.entities.hashtags,
             }
-        // res.json(tweets);
         });
-        res.json(values);    
-     });
-});
-
-app.get('/' ,function(req,res) {
-    res.sendFile('index.html');
-});
-app.listen(process.env.PORT || 8080 , () => {
-    console.log("Running on 8080");
-});
-
+    return res.json(values);
+    });
+    
+}
 
 

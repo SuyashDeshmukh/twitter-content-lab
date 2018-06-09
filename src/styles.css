@@ -3,3 +3,6 @@ body {
     background-color: #dad5cd;
     --blue-color: #1DA1F2 ; 
 }
+.text {
+    color: white;
+}

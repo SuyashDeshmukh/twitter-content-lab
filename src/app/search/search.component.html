@@ -1,0 +1,31 @@
+<div class="container mb-4">
+  <form class="justify-content-between" >
+    <div class="form-row">
+      <div class="form-group col-md-4">
+        <label for="tags" class="mx-2 text"> Hastags: </label>
+        <input class = "form-control" type="text" [(ngModel)]="hashtags" name="tags" >
+        <small class="text">Enter multiple tags</small>
+      </div>
+      <div class="form-group col-md-4">
+        <label for="count" class="mx-2 text"> Count: </label>
+        <input type="number" class = "form-control" [(ngModel)]="count" name="count">
+        <small class="text">Enter Count (Default: 10)</small>
+      </div>
+      <div class="form-group col-md-4">
+        <label for="type" class="mx-2 text"> Type: </label>
+        <select class="form-control" id="power" name="type" [(ngModel)] = "type" >
+          <option *ngFor="let type of types" [value]="type">{{type}}</option>
+        </select>
+        <small class="text">Select type of tweets</small>
+      </div>
+    </div>
+    <div class="form-row justify-content-center">
+      <div class="form-group col-md-3">
+          <button (click) = "searchTweets()" class="btn form-control">Search</button>
+      </div>
+      <div class="form-group col-md-3">
+        <button (click) = "clear()"  class="btn form-control">Clear</button>
+    </div>
+    </div>
+  </form>
+</div>

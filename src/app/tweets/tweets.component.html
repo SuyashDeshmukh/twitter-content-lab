@@ -1,16 +1,27 @@
+<div class="container">
+  <form class="form-inline justify-content-end mb-2 mt-2">
+    <div class="form-group">
+      <label for="type" class="mx-2"> Sort by : </label>
+      <select class="form-control" required #f name="filter" [(ngModel)]="filter" (ngModelChange)="sortTweets()">
+        <option value="recent" selected> Most Recent</option>
+        <option value="retweets"> Most Retweets</option>
+        <option value="favorites"> Most Favorites </option>
+      </select>
+    </div>
+  </form>
+</div>
 <div class="content mb-3">
   <div class="container">
-    <div *ngIf="undefined === restItems">{{ status }}</div>
-    <div *ngIf="restItems.length != 0">
-      <!-- <ul> -->
-      <div *ngFor="let post of restItems" class="card mb-2">
-          <div  class="card-body">
-            <div>{{ post.name }} <span class="user-name"> @{{ post.handle }}</span></div>
-            {{ post.full_text }}
-            <div> Favorites : {{ post.favorites }}
-              <span> Retweets : {{ post.retweets }}</span>
-            </div>
-          </div>
+    <div *ngFor="let post of restItems" class="card mb-2">
+      <div class="card-body">
+        <div>{{ post.name }}
+          <a class="user-name ml-1" target="_blank" href="https://twitter.com/@{{post.handle}}"> @{{ post.handle }}</a>
+          <span class="ml-2 date">{{post.created_at | date : 'medium'}}</span>
+        </div>
+        {{ post.full_text }}
+        <div> Favorites : {{ post.favorites }}
+          <span> Retweets : {{ post.retweets }}</span>
+        </div>
       </div>
     </div>
   </div>

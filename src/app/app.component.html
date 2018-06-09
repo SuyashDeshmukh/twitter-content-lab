@@ -1,53 +1,6 @@
 <div class="header py-2">
   <h1 class="text-center mb-4 mt-2 text">Twitter Content Lab</h1>
-  <!-- <div class="card"> -->
-  <div class="container mb-4">
-    <form class="justify-content-between" >
-      <div class="form-row">
-        <div class="form-group col-md-4">
-          <label for="tags" class="mx-2 text"> Hastags: </label>
-          <input class = "form-control" type="text" [(ngModel)]="hashtags" name="tags" >
-          <small class="text">Enter multiple tags</small>
-        </div>
-        <div class="form-group col-md-4">
-          <label for="count" class="mx-2 text"> Count: </label>
-          <input type="number" class = "form-control" [(ngModel)]="count" name="count">
-          <small class="text">Enter Count (Default: 10)</small>
-        </div>
-        <div class="form-group col-md-4">
-          <label for="type" class="mx-2 text"> Type: </label>
-          <select class="form-control" id="power" name="type" [(ngModel)] = "type" >
-            <option *ngFor="let type of types" [value]="type">{{type}}</option>
-          </select>
-          <small class="text">Select type of tweets</small>
-        </div>
-      </div>
-      <div class="form-row justify-content-center">
-        <div class="form-group col-md-3">
-            <button (click) = "searchTweets()" class="btn form-control">Search</button>
-        </div>
-        <div class="form-group col-md-3">
-          <button (click) = "clear()"  class="btn form-control">Clear</button>
-      </div>
-      </div>
-    </form>
-  </div>
-</div>
-<div class="container">
-  <form class="form-inline justify-content-end mb-2 mt-2">
-    <div class="form-group">
-      <label for="type" class="mx-2"> Sort by : </label>
-      <select class="form-control" required #f name="filter" [(ngModel)]="filter" (ngModelChange)="sortTweets()">
-        <option value="recent" selected> Most Recent</option>
-        <option value="retweets"> Most Retweets</option>
-        <option value="favorites"> Most Favorites </option>
-      </select>
-    </div>
-  </form>
+  <app-search (getTweets) = "getRestItems($event)" (clearTweets) = "clear()"></app-search>
 </div>
 <app-tweets [restItems] = "restItems"></app-tweets>
-<!-- <div>
-  <div class="header footer text text-center">
-    Developed by Suyash Deshmukh
-  </div>
-</div> -->
+

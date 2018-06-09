@@ -4,3 +4,7 @@
 .user-name {
     color: var(--blue-color);
 }
+.date {
+    color: gray;
+    opacity: 0.5;
+}

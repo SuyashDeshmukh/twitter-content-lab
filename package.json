@@ -1,5 +1,5 @@
 {
-  "name": "heroku-test-app",
+  "name": "twitter-content-lab",
   "version": "0.0.0",
   "scripts": {
     "serve" :"ng serve && node server/server.js",
