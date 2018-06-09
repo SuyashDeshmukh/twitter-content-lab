@@ -1,0 +1,6 @@
+.card {
+    border-color: var(--blue-color) ;
+}
+.user-name {
+    color: var(--blue-color);
+}

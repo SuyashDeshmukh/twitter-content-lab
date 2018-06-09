@@ -22,7 +22,7 @@ app.use(function(req, res, next) {
   });
 
 // Uncomment for production
-app.use(express.static(path.join(__dirname +'/../dist/heroku-test-app')));
+// app.use(express.static(path.join(__dirname +'/../dist/heroku-test-app')));
 
 app.get('/search',function (req,res) {
     // res.send('Hello World');
@@ -45,10 +45,12 @@ app.get('/search',function (req,res) {
                 created_at : tweet.created_at,
                 full_text : tweet.full_text,
                 retweets : tweet.retweet_count,
-                favorites : tweet.favorite_count
-                // hashtags : tweet.entities.hashtags,
+                favorites : tweet.favorite_count,
+                name: tweet.user.name,
+                handle: tweet.user.screen_name
+            //     // hashtags : tweet.entities.hashtags,
             }
-    // //     // res.json(tweets);
+        // res.json(tweets);
         });
         res.json(values);    
      });

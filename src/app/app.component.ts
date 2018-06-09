@@ -6,29 +6,40 @@ import { HttpService } from './http.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit {
+export class AppComponent {
   types = ['Recent', 'Popular', 'Mixed'];
   title = 'app';
   restItems: any;
   status = '';
   hashtags: string;
   count: number;
-  type = 'Recent';
-  filter = 'recent';
-  constructor(private httpservice: HttpService) { }
+  type: string;
+  filter: string;
 
-  ngOnInit() {
-    // this.getRestItems();
-    this.count = 10;
+  constructor(private httpservice: HttpService) {
+    this.type = 'Recent';
+    this.filter = 'recent';
+    this.hashtags = '';
     this.restItems = [];
-    // this.type = 'Recent';
+    this.count = 10;
   }
 
+
   searchTweets() {
-    if (this.count > 0) {
-      this.getRestItems();
+    console.log('in search');
+    if (this.validtags()) {
+      if (this.count > 0) {
+        if (this.count > 100) {
+          this.count = 100;
+        }
+        this.getRestItems();
+      } else {
+        alert('Enter valid Count value');
+        this.restItems = [];
+        this.count = 10;
+      }
     } else {
-      alert('Enter valid Count value');
+      alert('Invalid Hastags');
       this.restItems = [];
       this.count = 10;
     }
@@ -73,6 +84,30 @@ export class AppComponent implements OnInit {
     this.hashtags = '';
     this.count = 10;
     this.type = 'Recent';
+  }
+
+  validtags() {
+    console.log('in validations');
+    // this.hashtags += ' ';
+    if (this.hashtags.length < 2) {
+      return false;
+    }
+    const tags = this.hashtags.split(' ');
+    console.log(tags);
+    const regex = '/[!@#$%^&*(),.?":{}|<>/]/g';
+
+    for (let index = 0; index < tags.length; index++) {
+      const tag = tags[index];
+      const tagname = tag.slice(1);
+      if (tag.charAt(0) !== '#' || tag.length <= 1) {
+        return false;
+      } else if (/[!@#$%^&*(),.?":{}|<>/]/g.test(tagname)) {
+        return false;
+      } else if (/[0-9]/g.test(tagname[0])) {
+        return false;
+      }
+    }
+    return true;
   }
 
 }

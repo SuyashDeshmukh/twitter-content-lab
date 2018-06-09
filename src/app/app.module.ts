@@ -4,10 +4,12 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { HttpService } from './http.service';
+import { TweetsComponent } from './tweets/tweets.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    TweetsComponent
   ],
   imports: [
     HttpClientModule,

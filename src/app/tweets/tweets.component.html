@@ -1,0 +1,17 @@
+<div class="content mb-3">
+  <div class="container">
+    <div *ngIf="undefined === restItems">{{ status }}</div>
+    <div *ngIf="restItems.length != 0">
+      <!-- <ul> -->
+      <div *ngFor="let post of restItems" class="card mb-2">
+          <div  class="card-body">
+            <div>{{ post.name }} <span class="user-name"> @{{ post.handle }}</span></div>
+            {{ post.full_text }}
+            <div> Favorites : {{ post.favorites }}
+              <span> Retweets : {{ post.retweets }}</span>
+            </div>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>

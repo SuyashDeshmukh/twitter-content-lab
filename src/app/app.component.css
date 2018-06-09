@@ -1,20 +1,17 @@
 .header {
-    background-color: #1DA1F2;
+    background-color: var(--blue-color);
 }
 .text {
     color: white;
 }
-.card {
-    border-color: #1DA1F2;
-    transition: width 2s; 
-}
 .btn {
-    color: black;
+    background-color: black;
+    color: white;
     text-align: center;
 }
 .btn:hover {
-    background-color: black;
-    color: white;
+    color: black;
+    background-color: white;
 }
 .footer {
     position: static;
