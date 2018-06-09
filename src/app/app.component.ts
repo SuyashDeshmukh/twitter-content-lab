@@ -1,6 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-// import { HttpClient } from '@angular/common/http';
-// import { map } from 'rxjs/operators';
 import { HttpService } from './http.service';
 
 @Component({
@@ -9,39 +7,46 @@ import { HttpService } from './http.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  types = ['RECENT', 'POPULAR', 'MIXED'];
+  types = ['Recent', 'Popular', 'Mixed'];
   title = 'app';
   restItems: any;
   status = '';
   hashtags: string;
   count: number;
-  type = 'RECENT';
+  type = 'Recent';
   filter = 'recent';
-  constructor(private httpservice: HttpService) {}
+  constructor(private httpservice: HttpService) { }
 
   ngOnInit() {
     // this.getRestItems();
+    this.count = 10;
+    this.restItems = [];
+    // this.type = 'Recent';
   }
 
   searchTweets() {
-    this.status = 'Loading..';
-    this.filter = 'recent';
-    // this.type = this.type.toLowerCase();
-    this.getRestItems();
+    if (this.count > 0) {
+      this.getRestItems();
+    } else {
+      alert('Enter valid Count value');
+      this.restItems = [];
+      this.count = 10;
+    }
   }
 
   getRestItems(): void {
     // const tags  = this.hashtags.replace('\#', '');
-    console.log(this.hashtags);
-    this.httpservice.getAll(this.hashtags, this.count, this.type.toLowerCase())
+    console.log(this.hashtags + this.count + this.type);
+    this.filter = 'recent';
+    this.status = 'Loading..';
+    this.httpservice.getAll(this.hashtags, this.count, 'Recent')
       .subscribe(
         restItems => {
           this.restItems = restItems.sort((a, b) => {
             return b.id - a.id;
           });
           console.log(this.restItems);
-        }
-      );
+        });
   }
 
   sortTweets() {
@@ -59,6 +64,15 @@ export class AppComponent implements OnInit {
         return b.favorites - a.favorites;
       });
     }
+  }
+
+  clear() {
+    // console.log('clear called');
+    this.restItems = [];
+    // console.log(this.restItems);
+    this.hashtags = '';
+    this.count = 10;
+    this.type = 'Recent';
   }
 
 }

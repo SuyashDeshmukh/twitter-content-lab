@@ -1,0 +1,24 @@
+.header {
+    background-color: #1DA1F2;
+}
+.text {
+    color: white;
+}
+.card {
+    border-color: #1DA1F2;
+    transition: width 2s; 
+}
+.btn {
+    color: black;
+    text-align: center;
+}
+.btn:hover {
+    background-color: black;
+    color: white;
+}
+.footer {
+    position: static;
+    /* left: 0; */
+    /* bottom: 0; */
+    width: 100%;
+}

@@ -21,7 +21,7 @@ app.use(function(req, res, next) {
     next();
   });
 
-
+// Uncomment for production
 app.use(express.static(path.join(__dirname +'/../dist/heroku-test-app')));
 
 app.get('/search',function (req,res) {
@@ -57,7 +57,9 @@ app.get('/search',function (req,res) {
 app.get('/' ,function(req,res) {
     res.sendFile('index.html');
 });
-app.listen(process.env.PORT || 8080);
+app.listen(process.env.PORT || 8080 , () => {
+    console.log("Running on 8080");
+});
 
 
 
